@@ -5,45 +5,53 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import WelcomeScreen from "./screens/WelcomeScreen";
 import UserScreen from "./screens/UserScreen";
 import { Ionicons } from "@expo/vector-icons";
-const Drawer = createDrawerNavigator();
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+const BottomTab = createBottomTabNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator
+      <BottomTab.Navigator
         screenOptions={{
           headerStyle: {
             backgroundColor: "#3c0a6b",
           },
           headerTintColor: "white",
-          drawerActiveTintColor: "#3c0a6b",
-          drawerActiveBackgroundColor: "#f0e1ff",
+          tabBarActiveTintColor: "#3c0a6f",
+          // drawerActiveTintColor: "#3c0a6b",
+          // drawerActiveBackgroundColor: "#f0e1ff",
           // drawerStyle: {
           //   backgroundColor: "#ccc",
           // },
         }}
         initialRouteName="Welcome"
       >
-        <Drawer.Screen
+        <BottomTab.Screen
           name="Welcome"
           component={WelcomeScreen}
           options={{
-            drawerIcon: ({ color }) => (
+            tabBarIcon: ({ color }) => (
               <Ionicons name="home" color={color} size={22} />
             ),
-            drawerLabel: "Welcome Screen",
+            // drawerIcon: ({ color }) => (
+            //   <Ionicons name="home" color={color} size={22} />
+            // ),
+            // drawerLabel: "Welcome Screen",
           }}
         />
-        <Drawer.Screen
+        <BottomTab.Screen
           name="User"
           component={UserScreen}
           options={{
-            drawerIcon: ({ color, size }) => (
-              <Ionicons name="person" color={color} size={size} />
+            tabBarIcon: ({ color }) => (
+              <Ionicons name="person" color={color} size={22} />
             ),
+            // drawerIcon: ({ color, size }) => (
+            //   <Ionicons name="person" color={color} size={size} />
+            // ),
           }}
         />
-      </Drawer.Navigator>
+      </BottomTab.Navigator>
     </NavigationContainer>
   );
 }
